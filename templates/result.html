@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Quality Prediction</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Air Quality Prediction Result</h2>
+
+        <!-- Prediction Result -->
+        <div class="alert {{ prediction_info.class }} text-center">
+            <h4>Air Quality Level: {{ prediction_info.level }}</h4>
+            <p>{{ prediction_info.description }}</p>
+        </div>
+
+        <!-- Input Data Table -->
+        <h4 class="mt-4">Calculation was based on following data</h4>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Feature</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for key, value in input_data.items() %}
+                <tr>
+                    <td>{{ key }}</td>
+                    <td>{{ input_data[key][0] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-primary">Go Back</a>
+        </div>
+    </div>
+</body>
+</html>

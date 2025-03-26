@@ -9,175 +9,86 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="/">Air Quality Predictor</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<!--    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<!--        <div class="container">-->
+<!--            <a class="navbar-brand" href="/">Air Quality Predictor</a>-->
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="collapse navbar-collapse" id="navbarNav">-->
+<!--                <ul class="navbar-nav">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link active" href="/">Home</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="#about">About</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
 
     <!-- Main Content -->
     <div class="container my-5">
         <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title text-center mb-4">Air Quality Prediction</h2>
-                        <form method="POST" action="/">
+            <div class="card">
+                <div class="card-body d-flex">
+                    <!-- Side Section (Temperature, Humidity, CO) -->
+                    <form method="POST" action="/predict" class="flex-grow-1">
+                        <div class="side-info">
+                            <h5>Live Data</h5>
                             <div class="mb-3">
                                 <label for="temperature" class="form-label">Temperature (°C)</label>
-                                <input type="number" class="form-control" id="temperature" name="temperature" 
-                                    step="0.1" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid number">
+                                <input type="number" class="form-control" id="temperature" name="temperature" step="0.1" required value="{{ data.Temperature }}">
                             </div>
                             <div class="mb-3">
                                 <label for="humidity" class="form-label">Humidity (%)</label>
-                                <input type="number" class="form-control" id="humidity" name="humidity" 
-                                    min="0" 
-                                    max="100" 
-                                    step="0.1" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a number between 0 and 100">
+                                <input type="number" class="form-control" id="humidity" name="humidity" min="0" max="100" step="0.1" required value="{{ data.Humidity }}">
                             </div>
                             <div class="mb-3">
+                                <label for="co" class="form-label">CO (ppm)</label>
+                                <input type="number" class="form-control" id="co" name="co" min="0" step="0.01" required value="{{ data.CO }}">
+                            </div>
+                        </div>
+                        <!-- Main Form -->
+                        <!--<form method="POST" action="/predict" class="flex-grow-1">-->
+                        <div class="main-info">
+                            <h2 class="text-center mb-4">Air Quality Prediction</h2>
+                            <div class="mb-3">
                                 <label for="pm25" class="form-label">PM2.5 Concentration (µg/m³)</label>
-                                <input type="number" class="form-control" id="pm25" name="pm25" 
-                                    min="0" 
-                                    step="0.1" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
+                                <input type="number" class="form-control" id="pm25" name="pm25" min="0" step="0.1" required>
                             </div>
                             <div class="mb-3">
                                 <label for="pm10" class="form-label">PM10 Concentration (µg/m³)</label>
-                                <input type="number" class="form-control" id="pm10" name="pm10" 
-                                    min="0" 
-                                    step="0.1" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
+                                <input type="number" class="form-control" id="pm10" name="pm10" min="0" step="0.1" required>
                             </div>
                             <div class="mb-3">
                                 <label for="no2" class="form-label">NO2 Concentration (ppb)</label>
-                                <input type="number" class="form-control" id="no2" name="no2" 
-                                    min="0" 
-                                    step="0.01" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
+                                <input type="number" class="form-control" id="no2" name="no2" min="0" step="0.01" required>
                             </div>
                             <div class="mb-3">
                                 <label for="so2" class="form-label">SO2 Concentration (ppb)</label>
-                                <input type="number" class="form-control" id="so2" name="so2" 
-                                    min="0" 
-                                    step="0.01" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
-                            </div>
-                            <div class="mb-3">
-                                <label for="co" class="form-label">CO Concentration (ppm)</label>
-                                <input type="number" class="form-control" id="co" name="co" 
-                                    min="0" 
-                                    step="0.01" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
+                                <input type="number" class="form-control" id="so2" name="so2" min="0" step="0.01" required>
                             </div>
                             <div class="mb-3">
                                 <label for="proximity_industrial" class="form-label">Proximity to Industrial Areas (km)</label>
-                                <input type="number" class="form-control" id="proximity_industrial" name="proximity_industrial" 
-                                    min="0" 
-                                    step="0.1" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
+                                <input type="number" class="form-control" id="proximity_industrial" name="proximity_industrial" min="0" step="0.1" required>
                             </div>
                             <div class="mb-3">
                                 <label for="population_density" class="form-label">Population Density (people/km²)</label>
-                                <input type="number" class="form-control" id="population_density" name="population_density" 
-                                    min="0" 
-                                    required 
-                                    pattern="[0-9]*[.,]?[0-9]+" 
-                                    onkeypress="return (event.charCode >= 48 && event.charCode <= 57) || event.charCode === 46"
-                                    title="Please enter a valid non-negative number">
+                                <input type="number" class="form-control" id="population_density" name="population_density" min="0" required>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Predict</button>
-                        </form>
-
-                        {% if error %}
-                        <div class="alert alert-danger mt-3" role="alert">
-                            {{ error }}
                         </div>
-                        {% endif %}
-
-                        {% if prediction and prediction.level %}
-                        <div class="alert {{ prediction.class }} mt-3" role="alert">
-                            <h4 class="alert-heading">Air Quality: {{ prediction.level }}</h4>
-                            <p class="mb-0">{{ prediction.description }}</p>
-                        </div>
-                        {% endif %}
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 mt-5">
-        <div class="container text-center">
-            <p>© 2024 Air Quality Predictor. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#" class="text-light mx-2"><i class="bi bi-github"></i></a>
-                <a href="#" class="text-light mx-2"><i class="bi bi-linkedin"></i></a>
-                <a href="#" class="text-light mx-2"><i class="bi bi-twitter"></i></a>
-            </div>
-        </div>
-    </footer>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    <script>
-        // Prevent paste of non-numeric values
-        document.querySelectorAll('input[type="number"]').forEach(input => {
-            input.addEventListener('paste', (e) => {
-                let paste = (e.clipboardData || window.clipboardData).getData('text');
-                if (isNaN(paste)) {
-                    e.preventDefault();
-                }
-            });
-
-            // Prevent typing of non-numeric values (except for allowed special keys)
-            input.addEventListener('keydown', (e) => {
-                const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', '.'];
-                if (!allowedKeys.includes(e.key) && isNaN(e.key) && !e.ctrlKey) {
-                    e.preventDefault();
-                }
-            });
-        });
-    </script>
 </body>
-</html> 
+</html>

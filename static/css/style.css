@@ -37,4 +37,72 @@ body {
 
 .social-links a:hover {
     color: #007bff !important;
-} 
+}
+
+.card-body {
+    display: flex;
+    gap: 20px;
+}
+
+/* Centering Live Data Box */
+.side-info {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 300px; /* Adjust width as needed */
+    max-height:600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centers the entire box */
+}
+
+/* Left-align labels and inputs */
+.side-info .mb-3 {
+    text-align: left;  /* Ensures labels are left-aligned */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ensure input fields are left-aligned */
+.side-info .form-control {
+    width: 100%;  /* Inputs take full width */
+    text-align: left; /* Ensures text inside input fields is left-aligned */
+}
+
+/* Center the heading inside the Live Data box */
+.side-info h5 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Ensuring the form takes remaining space */
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    min-width:900px
+}
+
+.main-info{
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 350px; /* Adjust width as needed */
+    max-height:900px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centers the entire box */
+    }
+
+body{
+margin:0;
+padding:0;
+width:100%;
+height:100%;
+}

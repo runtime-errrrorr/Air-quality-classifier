@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.split-container {
+    display: flex;
+    height: 100vh;
+}
+
+.image-section {
+    flex: 3;
+    background-image: url('https://images.unsplash.com/photo-1605722625766-a1151e3cc8dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.image-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(0,0,0,0.3));
+}
+
+.content-section {
+    flex: 2;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8f9fa;
+}
+
+.location-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-select {
+    border-radius: 8px;
+    padding: 0.8rem;
+    border: 2px solid #e9ecef;
+    transition: all 0.3s ease;
+}
+
+.form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.btn-primary {
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.description {
+    color: #6c757d;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #343a40;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.form-label {
+    color: #495057;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+} 
