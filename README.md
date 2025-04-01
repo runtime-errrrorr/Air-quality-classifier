@@ -25,6 +25,7 @@ This project is a web-based air quality prediction system that uses machine lear
 
 ## Project Structure
 air-quality-predictor/
+
 ├── `main.py` *# Main Flask application*  
 ├── `random_forest_model.joblib` *# Pre-trained ML model*  
 ├── `serial_data_connector.py` *# Serial data interface*  
