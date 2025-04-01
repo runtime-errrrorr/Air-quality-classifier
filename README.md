@@ -25,19 +25,19 @@ This project is a web-based air quality prediction system that uses machine lear
 
 ## Project Structure
 air-quality-predictor/
-├── main.py # Main Flask application
-├── random_forest_model.joblib # Pre-trained ML model
-├── serial_data_connector.py # Serial data interface
-├── static/
-│ ├── css/
-│ │ ├── style.css
-│ │ └── location_select.css
-│ └── js/
-│ └── location_select.js
-└── templates/
-├── location_select.html # Location selection page
-├── index.html # Main input form
-└── result.html # Prediction results page
+├── `main.py` *# Main Flask application*  
+├── `random_forest_model.joblib` *# Pre-trained ML model*  
+├── `serial_data_connector.py` *# Serial data interface*  
+├── static/  
+│   ├── css/  
+│   │   ├── `style.css`  
+│   │   └── `location_select.css`  
+│   └── js/  
+│       └── `location_select.js`  
+└── templates/  
+    ├── `location_select.html` *# Location selection page*  
+    ├── `index.html` *# Main input form*  
+    └── `result.html` *# Prediction results page*  
 
 ## Installation
 
